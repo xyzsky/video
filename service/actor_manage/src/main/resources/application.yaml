@@ -5,9 +5,8 @@ server:
 spring:
   application:
     name: actor-manage
-#
-#  profiles:
-#    active: dev
+  profiles:
+    active: dev
 ---
 
 spring:
@@ -18,9 +17,9 @@ spring:
     password: a1b2c3
 
 # mybatis 日志
-mybatis-plus:
-  configuration:
-    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+#mybatis-plus:
+#  configuration:
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 hikari:
   connection-test-query: SELECT 1
 connection-timeout: 60000
@@ -32,3 +31,4 @@ pool-name: GuliHikariPool
 jackson:
   date-format: yyyy-MM-dd HH:mm:ss
 time-zone: GMT+8
+

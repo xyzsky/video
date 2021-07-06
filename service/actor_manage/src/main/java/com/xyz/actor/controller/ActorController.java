@@ -2,18 +2,17 @@ package com.xyz.actor.controller;
 
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.xyz.actor.entity.Actor;
 import com.xyz.actor.query.ActorQuery;
 import com.xyz.actor.service.ActorService;
 import com.xyz.commonutils.R;
+import com.xyz.exceptionhandler.CustomException;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiModelProperty;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.ibatis.annotations.Delete;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -118,7 +117,11 @@ public class ActorController {
     @ApiOperation(value = "修改演员信息")
     @PostMapping("updateActor")
     public R updateActor(@RequestBody Actor actor) {
-        int x = 10 / 0;
+        try {
+            int x = 10 / 0;
+        } catch (Exception e) {
+            throw new CustomException(400,"错误");
+        }
         boolean flag = actorService.updateById(actor);
         if (flag) {
             return R.ok();
